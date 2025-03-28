@@ -15,7 +15,7 @@ import { doc, setDoc } from "firebase/firestore";
 import { database } from "../../../database/firebase";
 import { getAuth } from "firebase/auth";
 
-const GOOGLE_API_KEY = "AIzaSyBO2vLUoT3Z_vnmvgZxh3-HWudHiwJUp8I";
+const GOOGLE_API_KEY ="";
 
 const CreateListing = () => {
   const [addressLine1, setAddressLine1] = useState("");
