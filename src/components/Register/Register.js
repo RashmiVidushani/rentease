@@ -4,6 +4,7 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
 import { auth, database } from "../../database/firebase";
 import styles from "./styles";
+import baseStyles from "../../styles/baseStyle";
 
 const Register = ({ navigation }) => {
   // Email regex pattern
@@ -11,6 +12,7 @@ const Register = ({ navigation }) => {
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [role, setRole] = useState("renter"); // Default to 'renter'
@@ -31,6 +33,7 @@ const Register = ({ navigation }) => {
       Alert.alert("Error", "Please fill all fields!");
       return;
     }
+    console.log("Role during registration:", role);
 
     try {
       // Register user with Firebase Authentication
@@ -49,7 +52,7 @@ const Register = ({ navigation }) => {
       });
 
       // Navigate to home screen or login screen after registration
-      if (role == "owner") {
+      if (role === "owner") {
         navigation.navigate("OwnerHome");
       } else {
         navigation.navigate("RenterHome");
@@ -64,8 +67,8 @@ const Register = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.header}>Register</Text>
-
+       <Text style={baseStyles.title}>Register</Text>
+      <Text style={styles.subTitle}> ** Please fill out the following information, make sure you choose the correct role when registering for a better experience. **</Text>
       <TextInput
         style={styles.input}
         placeholder="Name"
@@ -80,6 +83,15 @@ const Register = ({ navigation }) => {
         value={email}
         autoCapitalize="none"
         onChangeText={setEmail}
+      />
+
+<TextInput
+        style={styles.input}
+        placeholder="Phone Number"
+        keyboardType="phone"
+        value={phone}
+        autoCapitalize="none"
+        onChangeText={setPhone}
       />
 
       <TextInput
