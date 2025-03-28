@@ -7,6 +7,7 @@ import OwnerHome from "./src/components/OwnerHome/OwnerHome";
 import Register from "./src/components/Register/Register";
 import Listing from "./src/components/Listing/Listing";
 
+
 const Stack = createStackNavigator();
 
 const App = () => {
@@ -15,20 +16,44 @@ const App = () => {
       <Stack.Navigator
         // initialRouteName="OwnerHome"
         initialRouteName="Login"
-        screenOptions={{ headerShown: false }}
       >
-        <Stack.Screen name="Login" options={{ headerShown: false }}>
+        <Stack.Screen name="Login" 
+        options={{ headerShown: false,
+         
+        }}>
           {(props) => (
             <Login
               {...props}
-              title="Welcome to RentItRight"
               buttonLabel="Login"
             />
           )}
         </Stack.Screen>
-        <Stack.Screen name="RenterHome" component={RenterHome} />
-        <Stack.Screen name="OwnerHome" component={OwnerHome} />
-        <Stack.Screen name="Register" component={Register} />
+        <Stack.Screen name="RenterHome" component={RenterHome} options={
+          {headerShown: false,}
+        }>
+        </Stack.Screen>
+        <Stack.Screen name="OwnerHome" component={OwnerHome} options={
+          {headerShown: false,}
+        }></Stack.Screen>
+        <Stack.Screen name="Register" component={Register}
+        options={
+          {
+            title: "",
+            headerTintColor:"#fff",
+            headerStyle: {
+              backgroundColor: "#121212",
+            },
+            headerTitleStyle: {
+              fontFamily: "Roboto",
+              fontSize: 28,
+              fontWeight: "bold",
+              color: "#fff",
+            },
+          }
+        }
+        >
+          
+          </Stack.Screen>
         <Stack.Screen name="Listing" component={Listing} options={{headerShown: true}} />
       </Stack.Navigator>
     </NavigationContainer>

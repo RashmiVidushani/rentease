@@ -1,9 +1,11 @@
 import React, { useState } from "react";
-import { View, Text, TextInput, TouchableOpacity, Alert, Image } from "react-native";
+import { View, Text, TextInput, TouchableOpacity, Alert, Image, StatusBar } from "react-native";
 import styles from "./styles";
 import { auth, database } from "../../database/firebase";
 import { collection, getDocs } from "firebase/firestore";
 import { signInWithEmailAndPassword } from "firebase/auth";
+import baseStyles from "../../styles/baseStyle";
+
 
 const Login = ({ title, buttonLabel, navigation }) => {
   const [email, setEmail] = useState("");
@@ -49,14 +51,16 @@ const Login = ({ title, buttonLabel, navigation }) => {
   };
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>{title}</Text>
+    <View style={baseStyles.container}>
+      <StatusBar barStyle="light-content" backgroundColor="#fff" />
 
       <Image source={require('../../../assets/logo.png') }
           style={styles.image}/>
 
+      <Text style={baseStyles.title}>Sign In</Text>
+
       <TextInput
-        style={styles.input}
+        style={baseStyles.input}
         placeholder="Email"
         keyboardType="email-address"
         autoCapitalize="none"
@@ -65,32 +69,15 @@ const Login = ({ title, buttonLabel, navigation }) => {
       />
 
       <TextInput
-        style={styles.input}
+        style={baseStyles.input}
         placeholder="Password"
         secureTextEntry
         value={password}
         onChangeText={setPassword}
       />
 
-      <View style={styles.roleContainer}>
-        <TouchableOpacity onPress={() => setRole("renter")}>
-          <Text
-            style={[styles.roleText, role === "renter" && styles.selectedRole]}
-          >
-            Renter
-          </Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => setRole("owner")}>
-          <Text
-            style={[styles.roleText, role === "owner" && styles.selectedRole]}
-          >
-            Owner
-          </Text>
-        </TouchableOpacity>
-      </View>
-
-      <TouchableOpacity style={styles.button} onPress={handleLogin}>
-        <Text style={styles.buttonText}>{buttonLabel}</Text>
+      <TouchableOpacity style={baseStyles.button} onPress={handleLogin}>
+        <Text style={baseStyles.buttonText}>{buttonLabel}</Text>
       </TouchableOpacity>
 
       <TouchableOpacity onPress={() => navigation.navigate("Register")}>

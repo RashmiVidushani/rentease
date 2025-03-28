@@ -3,42 +3,36 @@ import { StyleSheet } from "react-native";
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
     alignItems: "center",
-    padding: 16,
-    backgroundColor: "#f0f0f0",
+    padding: 25,
+    backgroundColor: "#121212",
   },
-  title: {
-    fontSize: 24,
-    marginBottom: 20,
-    fontWeight: "bold",
-  },
-  image: {
-    width: 80,
-    height: 80,
-    borderRadius: 8,
-    marginRight: 8,
-    marginBottom: 20,
+  subTitle: {
+    fontSize: 16,
+    color: "red",
+    paddingBottom: 50,
   },
   input: {
     width: "100%",
     height: 45,
-    borderColor: "#ccc",
+    fontSize: 18,
+    borderColor: "#008080",
     borderWidth: 1,
     marginBottom: 15,
     paddingLeft: 10,
-    borderRadius: 5,
+    borderRadius: 20,
     backgroundColor: "#fff",
   },
   button: {
     width: "100%",
     height: 45,
-    backgroundColor: "#4CAF50",
+    backgroundColor: "#008080",
     justifyContent: "center",
     alignItems: "center",
-    borderRadius: 5,
+    borderRadius: 8,
   },
   buttonText: {
+    fontFamily: "Roboto",
     color: "#fff",
     fontSize: 18,
   },
@@ -58,15 +52,15 @@ const styles = StyleSheet.create({
     color: "#333",
     marginRight: 10,
     marginTop: 5,
-    backgroundColor: "#f5f5f5",
+    backgroundColor: "#E5E7EB",
     padding: 10,
     borderRadius: 5,
     borderWidth: 1,
-    borderColor: "#ccc",
+    borderColor: "#008080",
   },
   selectedRole: {
     fontWeight: "bold",
-    color: "#007BFF",
+    color: "#FF7043",
   }
 });
 

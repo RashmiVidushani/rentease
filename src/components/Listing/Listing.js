@@ -9,8 +9,22 @@ const Listing = () => {
   const route = useRoute(); // Get route params
 
   useEffect(() => {
-    fetchListings();
-  }, [route.params.propertyInfo]);
+    if (route.params?.propertyInfo && route.params.propertyInfo.length > 0) {
+      const sortedListings = [...route.params.propertyInfo].sort(
+        (a, b) => b.timeStamp - a.timeStamp // Sort by timestamp descending
+      );
+      setListing(sortedListings[0]); // Show the latest listing
+    }
+  }, [route.params?.propertyInfo]);
+  
+  useEffect(() => {
+    const auth = getAuth();
+    const user = auth.currentUser;
+    if (!user) {
+      Alert.alert("Error", "You must be logged in to view listings.");
+      navigation.navigate("Login");
+    }
+  }, [navigation]);
 
   const fetchListings = async () => {
     console.log(route.params.propertyInfo);
@@ -29,7 +43,7 @@ const Listing = () => {
   if (!listing) {
     return (
       <View style={styles.noDataContainer}>
-        <Text style={styles.noDataText}>Loading.</Text>
+        <Text style={styles.noDataText}>Loading...</Text>
       </View>
     );
   }
