@@ -2,28 +2,92 @@ import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
   container: {
-    padding: 20,
+    paddingTop: 10,
+    paddingRight: 20,
+    paddingLeft: 20,
+    alighnItems: "center",
+    backgroundColor: "#f5f5f5",
+  },
+  header: {
+    flexDirection: "row",
+    justifyContent: "space-between",
     alignItems: "center",
-    backgroundColor: "#f8f9fa",
-    flexGrow: 1,
+    marginBottom: 10,
   },
   imageContainer: {
-    marginBottom: 20,
+    width: "100%",
+    height: "auto",
     overflow: "hidden",
   },
   profileImage: {
-    marginTop: 20,
-    marginBottom: 15,
+    marginTop: 10,
+    marginBottom: 10,
     width: 350,
     height: 250,
+    borderWidth: 0.2,
+  },
+  nameContainer: {
+    flexDirection: "row",
+    alignItems: "left",
+    marginVertical: 10,
+    paddingVertical: 10,
+    paddingHorizontal: 10,
+    backgroundColor: "#fff",
+    borderBottomRightRadius:20,
+    elevation: 2,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+  },
+  contactContainer: {
+    height: "auto",
+    alignItems: "left",
+    marginVertical: 10,
+    paddingVertical: 10,
+    paddingHorizontal: 10,
+    backgroundColor: "#fff",
+    borderBottomRightRadius:20,
+    elevation: 2,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+  },
+  subtitle: {
+    textAlign: "left",
+    fontWeight: "bold",
+    fontSize: 18,
+    marginBottom: 10,
+  },
+  name: {
+    fontSize: 20,
+    textAlign: "left",
+    fontWeight: "500",
+    color: "#333",
+    fontWeight: "bold",
+  },
+  role : {
+    textAlignHorizantal: "center",
+    marginLeft: "45%",
+    fontSize: 16,
+    color: "green",
   },
   input: {
     width: "100%",
     height: 45,
     fontSize: 18,
+    marginBottom: 10,
     borderColor: "#008080",
     borderWidth: 1,
-    marginBottom: 15,
+    fontStyle: "italic",
+    borderColor: "transparent",
     paddingLeft: 10,
     borderRadius: 20,
     backgroundColor: "#fffff",
@@ -34,6 +98,10 @@ const styles = StyleSheet.create({
     width: "100%",
     marginTop: 10,
   },
+  inputEditable: {
+    borderColor: "#008080", 
+  },
+
   editButton: {
     backgroundColor: "#008080",
     paddingVertical: 12,
@@ -62,12 +130,10 @@ const styles = StyleSheet.create({
   cancelbuttonText: {
     color: "#008080",
     fontSize: 16,
-    fontWeight: "bold",
   },
   buttonText: {
     color: "#fff",
     fontSize: 16,
-    fontWeight: "bold",
   },
-    });
+});
 export default styles;

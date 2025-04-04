@@ -21,6 +21,13 @@ const styles = StyleSheet.create({
     marginRight: 8,
     marginBottom: 20,
   },
+  loginContainer: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    padding: 30,
+    backgroundColor: "#2A2A2A",
+  },
   input: {
     width: "100%",
     height: 45,

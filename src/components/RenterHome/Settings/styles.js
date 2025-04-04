@@ -4,7 +4,7 @@ export default StyleSheet.create({
   container: {
     flex: 1,
     padding: 16,
-    backgroundColor: "#f9f9f9",
+    backgroundColor: "#F5F5F5",
   },
   settingItem: {
     flexDirection: "row",
@@ -14,7 +14,7 @@ export default StyleSheet.create({
     paddingVertical: 10,
     paddingHorizontal: 16,
     backgroundColor: "#fff",
-    borderRadius: 8,
+    borderBottomRightRadius:20,
     elevation: 2,
   },
   label: {

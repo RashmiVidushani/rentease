@@ -5,6 +5,7 @@ export const styles = StyleSheet.create({
   container: {
     paddingVertical: 10,
     paddingHorizontal: 15,
+    backgroundColor: "#F5F5F5"
   },
   Header:{
     flexDirection: "row",
@@ -19,7 +20,7 @@ export const styles = StyleSheet.create({
     marginBottom: 15,
     shadowColor: "#000",
     shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
+    shadowOpacity: 0.4,
     shadowRadius: 4,
     elevation: 3,
   },
@@ -73,6 +74,50 @@ export const styles = StyleSheet.create({
     fontSize: 16,
     color: "#555",
   },
+  ownerButton:{
+    marginTop: 10,
+    backgroundColor: "#e74c3c",
+    paddingVertical: 8,
+    borderRadius: 5,
+    alignItems: "center",
+  },
+  ownerButtonIcon:{
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  buttonText:{
+    fontSize: 16,
+    color: "white",
+    fontWeight: "bold",
+    marginLeft: 5,
+  },
+
+  modalContainer: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "rgba(0,0,0,0.5)",
+  },
+  modalContent: {
+    width: 300,
+    height: "auto",
+    justifyContent: "center",
+    backgroundColor: "#cce5e5",
+    padding: 20,
+  },
+  modalTitle: {
+    fontSize: 20,
+    textAlign: "center",
+    fontWeight: "bold",
+    marginTop: 10,
+    marginBottom: 10,
+  },
+  modalText: {
+    
+    fontSize: 18,
+    margin : 8,
+  },
+  
 });
 
 export default styles;
