@@ -1,30 +1,33 @@
 import React, { useEffect, useState } from "react";
 import { View, Text, Image } from "react-native";
 import styles from "./styles";
+import { doc, getDoc } from "firebase/firestore";
+import { database } from "../../database/firebase";
 import { getAuth } from "firebase/auth";
 import { useRoute } from "@react-navigation/native";
+import { useFocusEffect, useNavigation } from "@react-navigation/native";
+
 
 const Listing = () => {
   const [listing, setListing] = useState(null);
   const route = useRoute(); // Get route params
+  const navigation = useNavigation();
 
   useEffect(() => {
-    if (route.params?.propertyInfo && route.params.propertyInfo.length > 0) {
-      const sortedListings = [...route.params.propertyInfo].sort(
-        (a, b) => b.timeStamp - a.timeStamp // Sort by timestamp descending
-      );
-      setListing(sortedListings[0]); // Show the latest listing
-    }
-  }, [route.params?.propertyInfo]);
+    fetchListings();
+  }, [route.params.propertyInfo]);
   
   useEffect(() => {
     const auth = getAuth();
+    
     const user = auth.currentUser;
     if (!user) {
       Alert.alert("Error", "You must be logged in to view listings.");
       navigation.navigate("Login");
     }
   }, [navigation]);
+
+ 
 
   const fetchListings = async () => {
     console.log(route.params.propertyInfo);
@@ -50,21 +53,35 @@ const Listing = () => {
 
   return (
     <View style={styles.container}>
-      <Image source={{ uri: listing.imageUri }} style={styles.image} />
+      <Image source={{ uri: listing.imageURL }} style={styles.image} />
       <Text style={styles.address}>
         {listing.addressLine1}, {listing.addressLine2}
       </Text>
       <Text style={styles.cost}>Cost: ${listing.costOfRent}</Text>
+     <View style={styles.listingDetails}>
+     
+     
       <Text style={styles.rentType}>Accomodation Type: {listing.rentType}</Text>
       <Text style={styles.numberOfRooms}>
         Number of Rooms: {listing.numberOfRooms} Rooms
       </Text>
+      <Text style={styles.postalCode}>
+        Postal Code: {listing.postalCode}
+      </Text>
       <Text style={styles.availability}>
         Availability: {listing.availability}
       </Text>
-      <Text style={styles.datePosted}>
+      
+     </View>
+
+
+     
+     <Text style={styles.datePosted}>
         Listed on {new Date(Number(listing.timeStamp)).toLocaleString()}
       </Text>
+      
+
+
     </View>
   );
 };

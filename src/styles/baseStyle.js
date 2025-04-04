@@ -2,8 +2,6 @@ import { StyleSheet } from "react-native";
 const baseStyles = StyleSheet.create({
     container: {
       flex: 1,
-      justifyContent: "center",
-      alignItems: "center",
       padding: 30,
       backgroundColor: "#121212",
     },
@@ -11,7 +9,7 @@ const baseStyles = StyleSheet.create({
       fontSize: 26,
       color: "#E8795C",
       fontFamily: "Roboto",
-      marginBottom: 30,
+      marginBottom: 20,
       fontWeight: "bold",
     },
     input: {

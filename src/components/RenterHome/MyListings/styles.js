@@ -3,24 +3,27 @@ import { StyleSheet } from "react-native";
 export const styles = StyleSheet.create({
 container: {
     flex: 1,
-    backgroundColor: "#F8F8F8",
+    backgroundColor: "#F5F5F5",
+    justifyContent: 'center',  
+    
     padding: 10,
   },
   listContainer: {
     paddingBottom: 20,
   },
   emptyText: {
-    textAlign: "center",
-    fontSize: 16,
+    textAlign: 'center', 
+    fontSize: 18,
     color: "#777",
-    marginTop: 50,
   },
   card: {
-    backgroundColor: "#cce5e5",
+    backgroundColor: "#fff",
+    borderBottomRightRadius:20,
     marginBottom: 15,
-    borderWidth: 1,
-    borderColor: "#66b2b2",
-    borderRadius: 10,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.5,
+    shadowRadius: 2,
     elevation: 3,
   },
   cardImage: {

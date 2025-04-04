@@ -10,20 +10,19 @@ const Tab = createBottomTabNavigator();
 
 const OwnerScreen = () => {
   return (
-    
     <Tab.Navigator
       screenOptions={{
-        headerStatusBarHeight: 80,
+        headerStatusBarHeight: 20,
         tabBarStyle: {
-          height: 80, 
+          height: 60, 
           paddingBottom: 5, 
           backgroundColor: "#121212",
         },
         tabBarIconStyle: {
-        marginVertical: 15,
+        marginVertical: 10,
         },
         tabBarActiveTintColor: "white", 
-        tabBarInactiveTintColor: "#FF704390", 
+        tabBarInactiveTintColor: "#FF7043", 
         tabBarShowLabel: false, 
       }}
     >
@@ -35,8 +34,8 @@ const OwnerScreen = () => {
           headerStyle: { backgroundColor: "#121212" },
           headerTitleAlign: "center",
           headerTitleStyle: {
-            height: 70,
-            color: "#FF704390",
+            height: 60,
+            color: "#FF7043",
             fontFamily: "Roboto",
             fontSize: 22,
             fontWeight: "bold",
@@ -53,8 +52,8 @@ const OwnerScreen = () => {
           headerStyle: { backgroundColor: "#121212" },
           headerTitleAlign: "center",
           headerTitleStyle: {
-            height: 70,
-            color: "#FF704390",
+            height: 60,
+            color: "#FF7043",
             fontFamily: "Roboto",
             fontSize: 22,
             fontWeight: "bold",
@@ -72,8 +71,8 @@ const OwnerScreen = () => {
           headerStyle: { backgroundColor: "#121212" },
           headerTitleAlign: "center",
           headerTitleStyle: {
-            height: 70,
-            color: "#FF704390",
+            height: 60,
+            color: "#FF7043",
             fontFamily: "Roboto",
             fontSize: 22,
             fontWeight: "bold",
@@ -90,8 +89,8 @@ const OwnerScreen = () => {
           headerStyle: { backgroundColor: "#121212" },
           headerTitleAlign: "center",
           headerTitleStyle: {
-            height: 70,
-            color: "#FF704390",
+            height: 60,
+            color: "#FF7043",
             fontFamily: "Roboto",
             fontSize: 22,
             fontWeight: "bold",

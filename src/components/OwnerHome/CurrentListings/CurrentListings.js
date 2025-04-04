@@ -47,6 +47,9 @@ const CurrentListings = () => {
         });
       });
   
+      // Sort listings by timeStamp in descending order
+      fetchedListing.sort((a, b) => b.timeStamp.localeCompare(a.timeStamp)); // Sort as string values (in case `timeStamp` is a string)
+      
       setListings(fetchedListing);
       setLoading(false);
     } catch (error) {
@@ -55,27 +58,67 @@ const CurrentListings = () => {
     }
   };
   
+  
 
   const deleteListing = async (listingId) => {
-    try {
-      const auth = getAuth();
-      const user = auth.currentUser;
-
-      if (!user) {
-        Alert.alert("Error", "You must be logged in to delete listings.");
-        navigation.navigate("Login");
-        return;
-      }
-
-      const userId = user.uid;
-      await deleteDoc(doc(database, `users/${userId}/listings/${listingId}`));
-      Alert.alert("Success", "Listing deleted successfully.");
-      fetchListings(); // Refresh listings
-    } catch (error) {
-      console.error("Error deleting listing: ", error);
-      Alert.alert("Error", "Unable to delete listing.");
-    }
+    Alert.alert(
+      "Confirm Deletion",
+      "Are you sure you want to delete this listing?",
+      [
+        {
+          text: "Cancel",
+          style: "cancel",
+        },
+        {
+          text: "Delete",
+          style: "destructive",
+          onPress: async () => {
+            try {
+              const auth = getAuth();
+              const user = auth.currentUser;
+  
+              if (!user) {
+                Alert.alert("Error", "You must be logged in to delete listings.");
+                navigation.navigate("Login");
+                return;
+              }
+  
+              const userId = user.uid;
+  
+              // Delete from the owner's listings collection
+              await deleteDoc(doc(database, `users/${userId}/listings/${listingId}`));
+  
+              // Delete from the owner's favourites collection as well
+              await deleteDoc(doc(database, `users/${userId}/favourites/${listingId}`));
+  
+              // Now delete this listing from the favourites of all renters
+              const usersRef = collection(database, "users");
+              const usersSnapshot = await getDocs(usersRef);
+  
+              usersSnapshot.docs.forEach(async (userDoc) => {
+                const userFavouritesRef = collection(database, `users/${userDoc.id}/favourites`);
+                const userFavouritesSnapshot = await getDocs(userFavouritesRef);
+  
+                userFavouritesSnapshot.docs.forEach(async (favouriteDoc) => {
+                  if (favouriteDoc.id === listingId) {
+                    await deleteDoc(favouriteDoc.ref); // Delete the listing from this user's favourites
+                  }
+                });
+              });
+  
+              Alert.alert("Success", "Listing deleted successfully.");
+              fetchListings(); // Refresh listings for the owner
+            } catch (error) {
+              console.error("Error deleting listing: ", error);
+              Alert.alert("Error", "Unable to delete listing.");
+            }
+          },
+        },
+      ]
+    );
   };
+  
+  
 
   useFocusEffect(
     useCallback(() => {

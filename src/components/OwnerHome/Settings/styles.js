@@ -14,7 +14,7 @@ export default StyleSheet.create({
     paddingVertical: 10,
     paddingHorizontal: 16,
     backgroundColor: "#fff",
-    borderRadius: 8,
+    borderBottomRightRadius:20,
     elevation: 2,
   },
   deleteButton: {

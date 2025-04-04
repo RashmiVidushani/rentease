@@ -42,12 +42,12 @@ const styles = StyleSheet.create({
   imagePreview: {
     width: "100%",
     height: "100%",
-    borderRadius: 10,
+    borderBottomRadius: 20,
   },
   submitButton:{
       marginTop: 10,
       width: "100%",
-      height: 45,
+      height: 40,
       backgroundColor: "#FF7043",
       paddingVertical: 8,
       borderRadius: 5,
