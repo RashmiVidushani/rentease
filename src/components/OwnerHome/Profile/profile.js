@@ -119,6 +119,16 @@ const Profile = () => {
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
+      
+      {/* Profile Header */}
+      <View style={styles.nameContainer}>
+        <View style={styles.header}>
+        <Text style={styles.name}>{userData.name}</Text>
+        <Text style={styles.role}>Role : {userData.role}</Text>
+        </View>
+       
+       </View>
+      
       {/* Profile Picture */}
       <TouchableOpacity onPress={pickImage} disabled={uploading} style={styles.imageContainer}>
         {uploading ? (
@@ -130,17 +140,11 @@ const Profile = () => {
           />
         )}
       </TouchableOpacity>
-
+      <View style={styles.contactContainer}>
+      <Text style={styles.subtitle}>Contact Information</Text>
       {/* Editable Fields */}
       <TextInput
-        style={styles.input}
-        placeholder="Name"
-        value={updatedData.name}
-        onChangeText={(text) => setUpdatedData({ ...updatedData, name: text })}
-        editable={editing}
-      />
-      <TextInput
-        style={styles.input}
+        style={[styles.input, editing && styles.inputEditable]}
         placeholder="Email"
         value={updatedData.email}
         onChangeText={(text) => setUpdatedData({ ...updatedData, email: text })}
@@ -148,20 +152,14 @@ const Profile = () => {
         keyboardType="email-address"
       />
       <TextInput
-        style={styles.input}
+        style={[styles.input, editing && styles.inputEditable]}
         placeholder="Phone"
         value={updatedData.phone}
         onChangeText={(text) => setUpdatedData({ ...updatedData, phone: text })}
         editable={editing}
         keyboardType="phone-pad"
       />
-      <TextInput
-        style={styles.input}
-        placeholder="Role"
-        value={updatedData.role}
-        onChangeText={(text) => setUpdatedData({ ...updatedData, role: text })}
-        editable={editing}
-      />
+      </View>
 
       {/* Buttons */}
       <View style={styles.buttonContainer}>

@@ -5,13 +5,14 @@ import { auth, database } from "../../database/firebase";
 import { collection, getDocs } from "firebase/firestore";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import baseStyles from "../../styles/baseStyle";
+import { useNavigation } from "@react-navigation/native";
 
 
-const Login = ({ title, buttonLabel, navigation }) => {
+const Login = ({ title, buttonLabel }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [role, setRole] = useState("renter"); // Default role
-
+  const navigation = useNavigation()
   // Email regex pattern
   const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
@@ -35,7 +36,6 @@ const Login = ({ title, buttonLabel, navigation }) => {
             if (doc.id === uid) {
               const userData = doc.data();
               const userRole = userData?.role || "renter";
-              Alert.alert("Login Successful", `Welcome back, ${userRole}!`);
               if (userRole === "owner") {
                 navigation.navigate("OwnerHome"); 
               } else {
@@ -51,8 +51,8 @@ const Login = ({ title, buttonLabel, navigation }) => {
   };
 
   return (
-    <View style={baseStyles.container}>
-      <StatusBar barStyle="light-content" backgroundColor="#fff" />
+    <View style={styles.loginContainer}>
+      <StatusBar barStyle="Dark-content" backgroundColor="#fff" />
 
       <Image source={require('../../../assets/logo.png') }
           style={styles.image}/>
@@ -80,8 +80,15 @@ const Login = ({ title, buttonLabel, navigation }) => {
         <Text style={baseStyles.buttonText}>{buttonLabel}</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity onPress={() => navigation.navigate("Register")}>
+      <TouchableOpacity onPress={() =>
+      {
+        console.log("Navigating to Register");
+        navigation.replace("Register");    
+      }
+        }>
+        
         <Text style={styles.link}>Don't have an account? Register</Text>
+        
       </TouchableOpacity>
     </View>
   );

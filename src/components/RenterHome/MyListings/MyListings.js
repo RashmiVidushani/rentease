@@ -32,6 +32,8 @@ const MyListings = () => {
           id: doc.id,
           ...doc.data(),
         });
+       
+
       });
 
       setFavourites(favListings);
