@@ -14,16 +14,21 @@
     },
     "ios": {
       "bundleIdentifier": "com.pr.rentease",
-      "supportsTablet": true
+      "supportsTablet": true,
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#2A2A2A"
-      }
+      },
+      "package": "com.pr.rentease"
     },
     "web": {
       "favicon": "./assets/favicon.png"
     }
+   
   }
 }
