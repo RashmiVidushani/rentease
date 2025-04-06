@@ -116,7 +116,7 @@ This project was developed as a final group assignment for the Mobile Applicatio
 ### Installation
 
 ```bash
-git clone https://github.com//rentease.git
+git clone [https://github.com/RashmiVidushani/rentease.git]
 cd rentease
 npm install
 expo start
