@@ -143,6 +143,7 @@ const Profile = () => {
       <View style={styles.contactContainer}>
       <Text style={styles.subtitle}>Contact Information</Text>
       {/* Editable Fields */}
+      <Text style={styles.explaination}>** Changes done for these credentials are visible for the owners. This does not change your Login credentials. </Text>
       <TextInput
         style={[styles.input, editing && styles.inputEditable]}
         placeholder="Email"

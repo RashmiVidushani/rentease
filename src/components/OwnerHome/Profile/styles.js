@@ -43,6 +43,11 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
   },
+  explaination: {
+    fontSize: 16,
+    color: "red",
+    paddingBottom: 10,
+  },
   contactContainer: {
     height: "auto",
     alignItems: "left",
