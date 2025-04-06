@@ -14,6 +14,11 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginBottom: 10,
   },
+  explaination: {
+    fontSize: 16,
+    color: "red",
+    paddingBottom: 10,
+  },
   imageContainer: {
     width: "100%",
     height: "auto",
