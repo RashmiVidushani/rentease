@@ -5,11 +5,25 @@ import styles from "./styles";
 import { useNavigation } from "@react-navigation/native";
 import * as Notifications from "expo-notifications";
 import baseStyles from "../../../styles/baseStyle";
+import { useIconTheme } from '../../../hooks/useIconTheme';
+import defaultIcon from "../../../../assets/icons/default.png";
+import orangeTheme from "../../../../assets/icons/orangeTheme.png";
+import blueTheme from "../../../../assets/icons/blueTheme.png";
+import { Image } from "react-native";
+import IconPicker from '../../IconPicker';
+
 
 const Settings = () => {
   const [notificationsEnabled, setNotificationsEnabled] = useState(false);
   const navigation = useNavigation();
+  const { iconTheme } = useIconTheme();
 
+  const icons = {
+      default: defaultIcon,
+      orange: orangeTheme,
+      blue: blueTheme,
+     
+    };
   const handleSignOut = () => {
     const auth = getAuth();
     signOut(auth)
@@ -66,6 +80,14 @@ const Settings = () => {
 
   return (
     <View style={styles.container}>
+      <View style={[styles.settingItem, { flexDirection: 'column', alignItems: 'center' }]}>
+              <Text style={[styles.label, { marginBottom: 10 }]}>Selected App Icon</Text>
+              <Image
+                source={icons[iconTheme]}
+                style={{ width: 80, height: 80, marginBottom: 10 }}
+              />
+              <IconPicker />
+      </View>
       <View style={styles.settingItem}>
         <Text style={styles.label}>Enable Notifications</Text>
         <Switch
